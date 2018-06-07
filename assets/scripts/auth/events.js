@@ -6,13 +6,18 @@ const authApi = require('./api.js')
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('data is: ', data)
   authApi.signUp(data)
     .then(authUi.signUpSuccess)
     .catch(authUi.signUpError)
 }
 
-const onSignIn = function () {}
+const onSignIn = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  authApi.signIn(data)
+    .then(authUi.signInSuccess)
+    .catch(authUi.signInError)
+}
 
 const onChangePW = function () {}
 

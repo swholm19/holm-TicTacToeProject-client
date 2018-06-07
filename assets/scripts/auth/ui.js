@@ -13,7 +13,22 @@ const signUpError = function (error) {
   console.log('SignUpError is :' + error)
 }
 
+const signInSuccess = function (response) {
+  $('#sign-in-form').html('You are Signed In! ', response)
+  $('#signInModalLabel').html('Sign Up')
+  $('#signInModalLabel').css('color', 'grey')
+  store.user = response.user
+}
+
+const signInError = function (error) {
+  $('#signInModalLabel').html('Error. Please Try Again')
+  $('#signInModalLabel').css('color', 'red')
+  console.log('SignInError is :' + error)
+}
+
 module.exports = {
   signUpSuccess,
-  signUpError
+  signUpError,
+  signInSuccess,
+  signInError
 }
