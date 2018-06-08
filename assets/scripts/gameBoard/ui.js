@@ -1,4 +1,5 @@
 'use strict'
+const store = require('../store')
 
 const playerXMove = function (box) {
   $('#playerTurnX').html('Player X')
