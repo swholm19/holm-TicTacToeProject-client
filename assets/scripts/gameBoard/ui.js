@@ -20,8 +20,10 @@ const gameDraw = function () {
 const gameWinner = function (player) {
   if (player === 0) {
     $('#playerTurnX').html('Winner >> Player X')
+    $('#playerTurnO').html('Loser >> Player O')
   } else {
-    $('#playerTurnX').html('Winner >> Player X')
+    $('#playerTurnO').html('Winner >> Player O')
+    $('#playerTurnX').html('Loser >> Player O')
   }
 }
 

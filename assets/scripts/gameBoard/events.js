@@ -2,20 +2,30 @@
 const store = require('../store')
 const gameBoardApi = require('./api.js')
 const gameBoardUi = require('./ui.js')
+
 store.gameBoardGlobal = []
 
 const onPlayerMove = function (event) {
-  if (store.gameBoardGlobal.length < 9) {
-    if (store.gameBoardGlobal.length % 2 === 0) {
-      gameBoardUi.playerXMove('#' + event.target.id)
-      store.gameBoardGlobal.push(event.target.id)
-      checkForWinner('X')
+  if (store.gameBoardGlobal.length === 0) {
+    const data = gameBoardApi.createBoard()
+    console.log('create: ', data)
+  }
+  if (store.gameBoardGlobal.length < 8) {
+    if (!store.gameBoardGlobal.includes(event.target.id.toString())) {
+      if (store.gameBoardGlobal.length % 2 === 0) {
+        gameBoardUi.playerXMove('#' + event.target.id)
+        store.gameBoardGlobal.push(event.target.id)
+        checkForWinner('X')
+      } else {
+        gameBoardUi.playerOMove('#' + event.target.id)
+        store.gameBoardGlobal.push(event.target.id)
+        checkForWinner()
+      }
     } else {
-      gameBoardUi.playerOMove('#' + event.target.id)
-      store.gameBoardGlobal.push(event.target.id)
-      checkForWinner()
+      console.log('Number has already been played')
     }
   } else {
+    gameBoardUi.playerXMove('#' + event.target.id)
     gameBoardUi.gameDraw()
   }
 }
