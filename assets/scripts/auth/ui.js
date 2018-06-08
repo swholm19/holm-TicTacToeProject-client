@@ -15,6 +15,8 @@ const signUpError = function (error) {
 const signInSuccess = function (response) {
   $('#signInModalLabel').html('You are Signed In! ', response)
   $('#signInModalLabel').css('color', 'green')
+  $('#playerTurnX').html('Turn >> Player X')
+  $('#playerTurnO').html('Player O')
   store.user = response.user
 }
 
