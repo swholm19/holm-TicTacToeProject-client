@@ -14,14 +14,29 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  console.log(data)
   authApi.signIn(data)
     .then(authUi.signInSuccess)
     .catch(authUi.signInError)
 }
 
-const onChangePW = function () {}
+const onChangePW = function () {
+  event.preventDefault()
 
-const onSignOut = function () {}
+  const data = getFormFields(event.target)
+  console.log('cPW is:', data)
+  authApi.changePassword(data)
+    .then(authUi.changePasswordSuccess)
+    .catch(authUi.changePasswordError)
+}
+
+const onSignOut = function (event) {
+  event.preventDefault()
+  console.log('sign-out')
+  authApi.signOut()
+    .then(authUi.signOutSuccess)
+    .catch(authUi.signOutFailure)
+}
 
 module.exports = {
   onSignUp,
