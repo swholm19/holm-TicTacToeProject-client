@@ -56,6 +56,8 @@ const onGameLogic = function () {
       store.gameBoardGlobal.push(store.playerPosition)
       const didWin = checkForWinner('x')
       if (didWin) {
+        gameApi.updateBoard([store.playerPosition - 1, 'x', false])
+          .then(onUpdateGameData)
         gameBoardUi.gameDraw()
       }
     }
