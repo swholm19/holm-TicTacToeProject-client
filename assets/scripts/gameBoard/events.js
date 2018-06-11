@@ -20,7 +20,7 @@ const onReset = function () {
 const onCreateBoard = function () {
   gameApi.createBoard()
     .then(storeApiGame)
-    .catch(console.log('There was an error in creating board'))
+    .catch(gameBoardUi.createBoardFailure)
 }
 
 const onUpdateGameData = function (data) {

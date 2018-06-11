@@ -4,7 +4,8 @@ const historyApi = require('./api.js')
 const historyUi = require('./ui.js')
 
 const onUpdatePlayerHistory = function () {
-  historyApi.findGame(248)
+// Have ability to find a specifc game if you replace 248 with your ID
+//  historyApi.findGame(248)
   historyApi.findAllUserGames()
     .then(historyCalculations)
 }
@@ -35,7 +36,7 @@ const numGamesWon = function (games) {
     }
     if (indGameX > indGameO) {
       numXwon += 1
-    } else if (indGameO > indGameX) {
+    } else if (indGameO === indGameX) {
       numOwon += 1
     }
   }

@@ -40,10 +40,15 @@ const resetGameBoard = function () {
   $('#onGoingGames').html('Total Unfinished Games: ')
 }
 
+const createBoardFailure = function (error) {
+  console.log('Unable to create board: ', error)
+}
+
 module.exports = {
   playerXMove,
   playerOMove,
   gameDraw,
   gameWinner,
-  resetGameBoard
+  resetGameBoard,
+  createBoardFailure
 }

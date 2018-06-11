@@ -5,7 +5,7 @@ const store = require('../store')
 const createBoard = function () {
   return $.ajax({
     method: 'POST',
-    url: config.apiUrl + '/games/',
+    url: config.apiUrl + '/games',
     data: {},
     headers: {
       Authorization: 'Token token=' + store.user.token
