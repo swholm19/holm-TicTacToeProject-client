@@ -5,7 +5,17 @@ const store = require('../store')
 const findGame = function (id) {
   return $.ajax({
     method: 'GET',
-    url: config.apiUrl + '/books/' + id
+    url: config.apiUrl + '/games/' + id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const findAllUserGames = function () {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/games',
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
@@ -13,5 +23,6 @@ const findGame = function (id) {
 }
 
 module.exports = {
-  findGame
+  findGame,
+  findAllUserGames
 }

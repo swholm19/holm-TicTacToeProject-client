@@ -10,6 +10,13 @@ const storeApiGame = function (data) {
   onGameLogic()
 }
 
+const onReset = function () {
+  gameBoardUi.resetGameBoard()
+  store.gameBoardGlobal = []
+  store.apiGame = null
+  store.playerPosition = null
+}
+
 const onCreateBoard = function () {
   gameApi.createBoard()
     .then(storeApiGame)
@@ -22,14 +29,14 @@ const onUpdateGameData = function (data) {
 
 const onGameLogic = function () {
   if (store.apiGame.game.over === false) {
-    if (store.gameBoardGlobal.length < 9) {
+    if (store.gameBoardGlobal.length < 8) {
       if (!store.gameBoardGlobal.includes(store.playerPosition.toString())) {
         if (store.gameBoardGlobal.length % 2 === 0) {
           gameBoardUi.playerXMove('#' + store.playerPosition)
           store.gameBoardGlobal.push(store.playerPosition)
           const didWin = checkForWinner('x')
           if (didWin) {
-            gameApi.updateBoard([store.gameBoardGlobal.length - 1, 'x', false])
+            gameApi.updateBoard([store.playerPosition - 1, 'x', false])
               .then(onUpdateGameData)
           }
         } else {
@@ -37,16 +44,20 @@ const onGameLogic = function () {
           store.gameBoardGlobal.push(store.playerPosition)
           const didWin = checkForWinner('o')
           if (didWin) {
-            gameApi.updateBoard([store.gameBoardGlobal.length - 1, 'o', false])
+            gameApi.updateBoard([store.playerPosition - 1, 'o', false])
               .then(onUpdateGameData)
           }
         }
       } else {
         console.log('Number has already been played')
       }
-    } else {
-      // gameBoardUi.playerXMove('#' + store.playerPosition)
-      gameBoardUi.gameDraw()
+    } else if (store.gameBoardGlobal.length === 8) {
+      gameBoardUi.playerXMove('#' + store.playerPosition)
+      store.gameBoardGlobal.push(store.playerPosition)
+      const didWin = checkForWinner('x')
+      if (didWin) {
+        gameBoardUi.gameDraw()
+      }
     }
   }
 }
@@ -61,10 +72,9 @@ const onPlayerMove = function (event) {
 }
 
 const checkForWinner = function (player) {
-  let start
+  let start = null
   const checkBoardArray = []
-  const winningCombos = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9'],
-    ['1', '4', '7'], ['2', '5', '8'], ['3', '6', '9'], ['1', '5', '9'], ['3', '5', '7']]
+  const winningCombos = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9'], ['1', '4', '7'], ['2', '5', '8'], ['3', '6', '9'], ['1', '5', '9'], ['3', '5', '7']]
 
   if (player === 'x') {
     start = 0
@@ -80,16 +90,16 @@ const checkForWinner = function (player) {
      checkBoardArray.includes(winningCombos[n][1]) &&
      checkBoardArray.includes(winningCombos[n][2])) {
       gameBoardUi.gameWinner(start)
-      gameApi.updateBoard([store.gameBoardGlobal.length - 1, player, true])
+      gameApi.updateBoard([store.playerPosition - 1, player, true])
         .then(onUpdateGameData)
       return false
-    } else {
-      return true
     }
   }
+  return true
 }
 
 module.exports = {
   onPlayerMove,
-  onCreateBoard
+  onCreateBoard,
+  onReset
 }

@@ -17,6 +17,8 @@ const signInSuccess = function (response) {
   $('#signInModalLabel').css('color', 'green')
   $('#playerTurnX').html('Turn >> Player X')
   $('#playerTurnO').html('Player O')
+  $('.view1').css('display', 'none')
+  $('.view2').css('display', 'inline')
   store.user = response.user
 }
 
@@ -46,6 +48,8 @@ const signOutSuccess = function (response) {
   $('#signInModalLabel').css('color', 'black')
   $('#changePasswordModalLabel').html('Change Password')
   $('#changePasswordModalLabel').css('color', 'black')
+  $('.view1').css('display', 'inline')
+  $('.view2').css('display', 'none')
   delete store.user
 }
 
