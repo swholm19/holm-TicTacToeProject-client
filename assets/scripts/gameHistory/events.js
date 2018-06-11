@@ -1,5 +1,4 @@
 'use strict'
-const store = require('../store')
 const historyApi = require('./api.js')
 const historyUi = require('./ui.js')
 
