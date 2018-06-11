@@ -55,6 +55,21 @@ body {
   text-align: center;
 }
 
+#resetGame {
+  background-color: $grey;
+  border: 1px solid $white;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#playerHistory {
+  background-color: $grey;
+  border: 1px solid $white;
+  font-size: 20px;
+  text-align: center;
+}
+
 #menu-title {
   display: inline;
   font-size: 35px;

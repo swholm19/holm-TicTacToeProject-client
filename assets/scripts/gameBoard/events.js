@@ -1,45 +1,62 @@
 'use strict'
 const store = require('../store')
-const gameBoardApi = require('./api.js')
+const gameApi = require('./api.js')
 const gameBoardUi = require('./ui.js')
 
 store.gameBoardGlobal = []
 
-const storeApiGameBoard = function (data) {
-  console.log('create data: ', data)
-  store.apiGameBoard = data
+const storeApiGame = function (data) {
+  store.apiGame = data
+  onGameLogic()
 }
 
 const onCreateBoard = function () {
-  gameBoardApi.createBoard()
-    .then(storeApiGameBoard)
+  gameApi.createBoard()
+    .then(storeApiGame)
     .catch(console.log('There was an error in creating board'))
 }
 
-const onPlayerMove = function (event) {
-  if (store.gameBoardGlobal.length === 0) {
-    onCreateBoard()
-  }
+const onUpdateGameData = function (data) {
+  store.apiGame = data
+}
 
-  if (store.gameBoardGlobal.length < 8) {
-    if (!store.gameBoardGlobal.includes(event.target.id.toString())) {
-      if (store.gameBoardGlobal.length % 2 === 0) {
-        gameBoardUi.playerXMove('#' + event.target.id)
-        store.gameBoardGlobal.push(event.target.id)
-        gameBoardApi.updateBoard([store.gameBoardGlobal.length - 1, 'x', false])
-        checkForWinner('x')
+const onGameLogic = function () {
+  if (store.apiGame.game.over === false) {
+    if (store.gameBoardGlobal.length < 9) {
+      if (!store.gameBoardGlobal.includes(store.playerPosition.toString())) {
+        if (store.gameBoardGlobal.length % 2 === 0) {
+          gameBoardUi.playerXMove('#' + store.playerPosition)
+          store.gameBoardGlobal.push(store.playerPosition)
+          const didWin = checkForWinner('x')
+          if (didWin) {
+            gameApi.updateBoard([store.gameBoardGlobal.length - 1, 'x', false])
+              .then(onUpdateGameData)
+          }
+        } else {
+          gameBoardUi.playerOMove('#' + store.playerPosition)
+          store.gameBoardGlobal.push(store.playerPosition)
+          const didWin = checkForWinner('o')
+          if (didWin) {
+            gameApi.updateBoard([store.gameBoardGlobal.length - 1, 'o', false])
+              .then(onUpdateGameData)
+          }
+        }
       } else {
-        gameBoardUi.playerOMove('#' + event.target.id)
-        store.gameBoardGlobal.push(event.target.id)
-        gameBoardApi.updateBoard([store.gameBoardGlobal.length - 1, 'o', false])
-        checkForWinner('o')
+        console.log('Number has already been played')
       }
     } else {
-      console.log('Number has already been played')
+      // gameBoardUi.playerXMove('#' + store.playerPosition)
+      gameBoardUi.gameDraw()
     }
+  }
+}
+
+const onPlayerMove = function (event) {
+  store.playerPosition = event.target.id
+  if (store.gameBoardGlobal.length === 0) {
+    onCreateBoard(event)
   } else {
-    gameBoardUi.playerXMove('#' + event.target.id)
-    gameBoardUi.gameDraw()
+    onGameLogic(event)
   }
 }
 
@@ -63,7 +80,11 @@ const checkForWinner = function (player) {
      checkBoardArray.includes(winningCombos[n][1]) &&
      checkBoardArray.includes(winningCombos[n][2])) {
       gameBoardUi.gameWinner(start)
-      gameBoardApi.updateBoard([store.gameBoardGlobal.length - 1, player, true])
+      gameApi.updateBoard([store.gameBoardGlobal.length - 1, player, true])
+        .then(onUpdateGameData)
+      return false
+    } else {
+      return true
     }
   }
 }

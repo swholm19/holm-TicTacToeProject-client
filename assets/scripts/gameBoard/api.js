@@ -14,11 +14,10 @@ const createBoard = function () {
 }
 
 const updateBoard = function (dataArray) {
-  console.log('update function: ', dataArray)
-  console.log('timing: ', store.apiGameBoard)
+  console.log('update dataarray', dataArray)
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + '/games/' + store.apiGameBoard.game.id,
+    url: config.apiUrl + '/games/' + store.apiGame.game.id,
     data: {
       'game': {
         'cell': {
