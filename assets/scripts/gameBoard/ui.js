@@ -19,7 +19,7 @@ const gameDraw = function () {
 }
 
 const gameWinner = function (player) {
-  if (player === 'x') {
+  if (player === 0) {
     $('#playerTurnX').html('Winner >> Player X')
     $('#playerTurnO').html('Loser >> Player O')
   } else {
@@ -32,6 +32,12 @@ const resetGameBoard = function () {
   $('#playerTurnX').html('Turn >> Player X')
   $('#playerTurnO').html('Player O')
   $('.gamebox').html('')
+  $('#xTotalWins').html('Total X Wins: ')
+  $('#oTotalWins').html('Total O Wins: ')
+  $('#usernameHistory').html('Username: ')
+  $('#totalGames').html('Total Games Played: ')
+  $('#tieGames').html('Total Games Tied: ')
+  $('#onGoingGames').html('Total Unfinished Games: ')
 }
 
 module.exports = {

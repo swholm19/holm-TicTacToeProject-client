@@ -26,8 +26,8 @@ body {
 
 .menu {
   background-color: $grey;
-  float: right;
   color: $white;
+  float: right;
   margin-left: 5px;
   margin-top: 10px;
 }
@@ -38,6 +38,10 @@ body {
 
 .teal {
   background-color: $teal;
+}
+
+.view2 {
+  display: none;
 }
 
 #playerTurnO {
@@ -53,8 +57,10 @@ body {
   font-size: 40px;
 }
 
-.view2 {
-  display: none;
+#playerHistoryInfo {
+  border: 1px solid $white;
+  font-size: 20px;
+  margin-top: 10px;
 }
 
 #playerTurnX {
@@ -68,9 +74,9 @@ body {
   background-color: $grey;
   border: 1px solid $white;
   font-size: 20px;
-  text-align: center;
-  margin-top: 20px;
   margin-bottom: 100px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 #playerHistory {

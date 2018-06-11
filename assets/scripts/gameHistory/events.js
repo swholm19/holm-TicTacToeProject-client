@@ -19,7 +19,6 @@ const historyCalculations = function (data) {
 }
 
 const numGamesWon = function (games) {
-  console.log('Games: ', games)
   let numXwon = 0
   let numOwon = 0
   for (let i = 0; i < games.length; i++) {
