@@ -2,6 +2,7 @@
 const getFormFields = require('../../../lib/get-form-fields.js')
 const authUi = require('./ui.js')
 const authApi = require('./api.js')
+const gameBoardEvents = require('../gameBoard/events.js')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -29,6 +30,7 @@ const onChangePW = function () {
 
 const onSignOut = function (event) {
   event.preventDefault()
+  gameBoardEvents.onReset()
   authApi.signOut()
     .then(authUi.signOutSuccess)
     .catch(authUi.signOutFailure)
