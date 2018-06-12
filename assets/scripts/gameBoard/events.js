@@ -68,9 +68,9 @@ const onGameLogic = function () {
 const onPlayerMove = function (event) {
   store.playerPosition = event.target.id
   if (store.gameBoardGlobal.length === 0) {
-    onCreateBoard(event)
+    onCreateBoard()
   } else {
-    onGameLogic(event)
+    onGameLogic()
   }
 }
 

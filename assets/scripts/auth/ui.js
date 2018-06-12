@@ -49,7 +49,7 @@ const signOutSuccess = function (response) {
   $('#changePasswordModalLabel').html('Change Password')
   $('#changePasswordModalLabel').css('color', 'black')
   $('#usernameHistory').html('Username: ')
-  $('.view1').css('display', 'inline')
+  $('.view1').css('display', 'block')
   $('.view2').css('display', 'none')
   $('.view3').css('display', 'none')
   delete store.user
