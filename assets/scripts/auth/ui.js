@@ -4,12 +4,13 @@ const store = require('../store')
 const signUpSuccess = function (signUpResponse) {
   $('#signUpModalLabel').html('You are Signed Up! Now you can Sign In! ', signUpResponse)
   $('#signUpModalLabel').css('color', 'green')
+  $('#sign-up-form')[0].reset()
 }
 
 const signUpError = function (error) {
-  $('#signUpModalLabel').html('Error. Please Try Again')
+  $('#signUpModalLabel').html('Error. Please Try Again ', error)
   $('#signUpModalLabel').css('color', 'red')
-  console.log('SignUpError is :' + error)
+  $('#sign-up-form')[0].reset()
 }
 
 const signInSuccess = function (response) {
@@ -25,22 +26,26 @@ const signInSuccess = function (response) {
   $('#totalGames').html('Total Games Played: ')
   $('#tieGames').html('Total Games Tied: ')
   $('#onGoingGames').html('Total Unfinished Games: ')
+  $('#sign-in-form')[0].reset()
   store.user = response.user
 }
 
 const signInError = function () {
   $('#signInModalLabel').html('Error. Please Try Again')
   $('#signInModalLabel').css('color', 'red')
+  $('#sign-in-form')[0].reset()
 }
 
 const changePasswordSuccess = function (response) {
   $('#changePasswordModalLabel').html('You have successfully change your password!', response)
   $('#changePasswordModalLabel').css('color', 'green')
+  $('#change-password-form')[0].reset()
 }
 
 const changePasswordError = function () {
   $('#changePasswordModalLabel').html('Error. Please Try Again')
   $('#changePasswordModalLabel').css('color', 'red')
+  $('#change-password-form')[0].reset()
 }
 
 const signOutSuccess = function (response) {
