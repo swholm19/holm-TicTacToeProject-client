@@ -6,7 +6,7 @@ Process:
 Started out by making very basic simple wireframe in HTML so i had buttons i
 could manipulate and check to make sure they were working the way i was intending.
 
-Next i worked on all authentication Behavior (sign-up, sign-in, change-password,
+Next i worked on all authentication behavior (sign-up, sign-in, change-password,
 sign-out). I first created curl scripts to validate that the API was working,
 then i created the event-listener, the AJAX api call, and then the UI for both
 a succesfull and not succesfull response.
@@ -44,4 +44,24 @@ behavior that i saw to make sure the game was as intuitive as possible and
 give the user the best gaming experience possible.
 
 
-Odd Behavior:
+Odd Behavior/ Future Work:
+-If user has hundreds of game in the database it take a couple seconds for
+the players statistics to load.
+-In future iterations would like to make seeing the player statistics
+completely automated where the player would never need to click to update
+the information.
+
+User Stories:
+1) As a user, i want to be able to login so that i can play tic-tac-toe.
+2) As a user, i want to be able to reset the gameboard so that i can play
+another game.
+3) As a user, i want to be told the final result so that i dont have to tell
+my friend he lost.
+4) As a user, i want to be able to click on the gameboard to put my peice there
+so that i am able to play the game.
+5) As a user, i want to be able to sign out so that no one else can use my
+account.
+6) As a user, i want the game to automatically switch between the users when
+playing so that we dont accidentially play for each other.
+
+Intial Paper WireFrame: https://imgur.com/a/dfYG4wn
