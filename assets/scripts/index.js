@@ -21,6 +21,7 @@ $(() => {
   // The below line of code is event handlers to listen if the gameboard
   // has been clicked.
   $('.gamebox').on('click', boardEvents.onPlayerMove)
+
   $('#resetGame').on('click', boardEvents.onReset)
 
   $('#playerHistory').on('click', historyEvents.onUpdatePlayerHistory)
