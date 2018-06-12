@@ -12,6 +12,7 @@ $black: #000;
 body {
   background-color: $background-color;
   color: $font-color;
+  min-width: 999px;
 }
 
 footer {
