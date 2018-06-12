@@ -14,6 +14,17 @@ body {
   color: $font-color;
 }
 
+footer {
+  background-color: $grey;
+  border: 1px solid $white;
+  color: $font-color;
+  font-weight: 400px;
+  margin-top: 50px;
+  padding-top: 15px;
+  text-align: center;
+  width: 100%;
+}
+
 .gamebox {
   border: 1px solid $white;
   display: inline;
