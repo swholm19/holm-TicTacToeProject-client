@@ -33,7 +33,6 @@ const resetGameBoard = function () {
   $('.gamebox').html('')
   $('#xTotalWins').html('Total X Wins: ')
   $('#oTotalWins').html('Total O Wins: ')
-  $('#usernameHistory').html('Username: ')
   $('#totalGames').html('Total Games Played: ')
   $('#tieGames').html('Total Games Tied: ')
   $('#onGoingGames').html('Total Unfinished Games: ')
@@ -43,11 +42,16 @@ const createBoardFailure = function (error) {
   console.log('Unable to create board: ', error)
 }
 
+const displayPlayerHistory = function () {
+  $('.view3').css('display', 'inline')
+}
+
 module.exports = {
   playerXMove,
   playerOMove,
   gameDraw,
   gameWinner,
   resetGameBoard,
-  createBoardFailure
+  createBoardFailure,
+  displayPlayerHistory
 }

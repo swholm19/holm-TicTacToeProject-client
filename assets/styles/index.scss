@@ -25,6 +25,10 @@ body {
   width: 150px;
 }
 
+.modal {
+  color: $black;
+}
+
 .menu {
   background-color: $grey;
   border: 1px solid $white;
@@ -43,6 +47,10 @@ body {
 }
 
 .view2 {
+  display: none;
+}
+
+.view3 {
   display: none;
 }
 

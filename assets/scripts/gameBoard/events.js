@@ -21,6 +21,7 @@ const onCreateBoard = function () {
   gameApi.createBoard()
     .then(storeApiGame)
     .catch(gameBoardUi.createBoardFailure)
+  gameBoardUi.displayPlayerHistory()
 }
 
 const onUpdateGameData = function (data) {
