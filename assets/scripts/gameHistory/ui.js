@@ -3,6 +3,7 @@
 const updateUserName = function (email) {
   $('#usernameHistory').html('Username: ' + email)
   $('#playerHistory').css('border', '1px solid white')
+  $('#playerHistoryText').html('Click Here to Display Player Stats')
 }
 
 const totalGames = function (numAllGames) {
@@ -24,6 +25,7 @@ const showXandOWinners = function (xWins, oWins) {
 
 const findGamesFail = function () {
   $('#playerHistory').css('border', '1px solid red')
+  $('#playerHistoryText').html('Issue connecting with API. Log out and Sign Back In')
 }
 
 module.exports = {
