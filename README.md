@@ -1,52 +1,47 @@
-*fill with my own information
+
+Technology Used:
+HTML, CSS w/ Bootstrap, JavaScript, JSON, AJAX, and jQuery
+
+Process:
+Started out by making very basic simple wireframe in HTML so i had buttons i
+could manipulate and check to make sure they were working the way i was intending.
+
+Next i worked on all authentication Behavior (sign-up, sign-in, change-password,
+sign-out). I first created curl scripts to validate that the API was working,
+then i created the event-listener, the AJAX api call, and then the UI for both
+a succesfull and not succesfull response.
+
+Once authentication was done, i worked on the gameboard. I first started by
+creating the event-listner that told me what box the user had selected. Once i
+finished that i created the game logic that checked if it was a winner. Next
+i created the logic that validated that a user could actually play (example:
+they clicked a open box, game wasnt already won, or game was a draw). Then i
+implemented the UI, so the user knew what was going on with the game.
+
+After I created the curl scripts for communciation with the API to create and
+update the gameboard. Once that was working where it made sense i added a
+function in the game logic that called the API to create if it was the first
+time or update if it was any susequent move after the first.
+
+Once the authentication and game were working with the API. I started the
+displaying of the player statistics. I created the curl-scripts to test the
+API to make sure i could GET information. Then i created the HTML to house this
+information. Then the event-listner, which then called the API to get the
+informaiton. Once i had the information i created different functions to
+collect the differnet information i was trying to display. Once i had the
+information i created the UI manipulation to show the information to the user.
+
+After all the functinality was built in, I started doing the page styling
+to make sure there was a common theme across the page and that it all looked
+goood.
+
+After the page was looking good, i implemented 3 different user views. Depending
+on where the user was different information would be displayed. For example
+if you are not logged in you cant see the gameboard or the sign out option.
+
+The last thing i did was play with the game and fix any bugs or change and odd
+behavior that i saw to make sure the game was as intuitive as possible and
+give the user the best gaming experience possible.
 
 
-
-
-
-## Structure
-
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/index.js`](assets/scripts/index.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
-
-Developers should set `apiUrls.production` and `apiUrls.development` in
-[`config/environment.js`](config/environment.js).  With
-`apiUrls` set, developers may rely on `apiUrl` as the base for API
-URLs.
-
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss). Bootstrap version 3 is
-included in this template.
-
-Developers should use [getFormFields](get-form-fields.md) to retrieve form data
-to send to an API.
-
-To deploy a browser-template based SPA, run `grunt deploy`.
-
-## Tasks
-
-Developers should run these often!
-
-- `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
-- `grunt make-standard`: reformats all your code in the JavaScript Standard Style
-- `grunt <server|serve|s>`: generates bundles, watches, and livereloads
-- `grunt test`: runs any automated tests, depends on `grunt build`
-- `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
-
-## Additional Resources
-
-- [Modern Javascript Explained for Dinosaurs](https://medium.com/@peterxjang/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-- [Making Sense of Front End Build Tools](https://medium.freecodecamp.org/making-sense-of-front-end-build-tools-3a1b3a87043b)
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+Odd Behavior:
