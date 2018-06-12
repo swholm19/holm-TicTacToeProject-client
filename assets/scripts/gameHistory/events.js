@@ -3,10 +3,12 @@ const historyApi = require('./api.js')
 const historyUi = require('./ui.js')
 
 const onUpdatePlayerHistory = function () {
-// Have ability to find a specifc game if you replace 248 with your ID
+// Have ability to find a specifc game if you replace 248 with your game ID
+// but currently do not have any funcitonality that requires this.
 //  historyApi.findGame(248)
   historyApi.findAllUserGames()
     .then(historyCalculations)
+    .catch(historyUi.findGamesFail)
 }
 
 const historyCalculations = function (data) {

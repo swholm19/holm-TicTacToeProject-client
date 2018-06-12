@@ -2,6 +2,7 @@
 const store = require('../store')
 const gameApi = require('./api.js')
 const gameBoardUi = require('./ui.js')
+const gameHistoryEvent = require('../gameHistory/events.js')
 
 store.gameBoardGlobal = []
 
@@ -12,6 +13,7 @@ const storeApiGame = function (data) {
 
 const onReset = function () {
   gameBoardUi.resetGameBoard()
+  gameHistoryEvent.onUpdatePlayerHistory()
   store.gameBoardGlobal = []
   store.apiGame = null
   store.playerPosition = null
@@ -20,7 +22,7 @@ const onReset = function () {
 const onCreateBoard = function () {
   gameApi.createBoard()
     .then(storeApiGame)
-    .catch(gameBoardUi.createBoardFailure)
+    .catch(gameBoardUi.onBoardFailure)
   gameBoardUi.displayPlayerHistory()
 }
 
@@ -39,6 +41,7 @@ const onGameLogic = function () {
           if (didWin) {
             gameApi.updateBoard([store.playerPosition - 1, 'x', false])
               .then(onUpdateGameData)
+              .catch(gameBoardUi.onBoardFailure)
           }
         } else {
           gameBoardUi.playerOMove('#' + store.playerPosition)
@@ -47,10 +50,11 @@ const onGameLogic = function () {
           if (didWin) {
             gameApi.updateBoard([store.playerPosition - 1, 'o', false])
               .then(onUpdateGameData)
+              .catch(gameBoardUi.onBoardFailure)
           }
         }
       } else {
-        console.log('Number has already been played')
+        gameBoardUi.alreadyPlayedSpace()
       }
     } else if (store.gameBoardGlobal.length === 8) {
       gameBoardUi.playerXMove('#' + store.playerPosition)
@@ -59,6 +63,7 @@ const onGameLogic = function () {
       if (didWin) {
         gameApi.updateBoard([store.playerPosition - 1, 'x', false])
           .then(onUpdateGameData)
+          .catch(gameBoardUi.onBoardFailure)
         gameBoardUi.gameDraw()
       }
     }
@@ -95,6 +100,7 @@ const checkForWinner = function (player) {
       gameBoardUi.gameWinner(start)
       gameApi.updateBoard([store.playerPosition - 1, player, true])
         .then(onUpdateGameData)
+        .catch(gameBoardUi.onBoardFailure)
       return false
     }
   }

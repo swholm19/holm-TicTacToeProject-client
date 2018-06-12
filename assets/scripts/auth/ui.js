@@ -19,13 +19,18 @@ const signInSuccess = function (response) {
   $('#playerTurnO').html('Player O')
   $('.view1').css('display', 'none')
   $('.view2').css('display', 'inline')
+  $('#usernameHistory').html('Username: ')
+  $('#xTotalWins').html('Total X Wins: ')
+  $('#oTotalWins').html('Total O Wins: ')
+  $('#totalGames').html('Total Games Played: ')
+  $('#tieGames').html('Total Games Tied: ')
+  $('#onGoingGames').html('Total Unfinished Games: ')
   store.user = response.user
 }
 
-const signInError = function (error) {
+const signInError = function () {
   $('#signInModalLabel').html('Error. Please Try Again')
   $('#signInModalLabel').css('color', 'red')
-  console.log('SignInError is :' + error)
 }
 
 const changePasswordSuccess = function (response) {
@@ -33,10 +38,9 @@ const changePasswordSuccess = function (response) {
   $('#changePasswordModalLabel').css('color', 'green')
 }
 
-const changePasswordError = function (error) {
+const changePasswordError = function () {
   $('#changePasswordModalLabel').html('Error. Please Try Again')
   $('#changePasswordModalLabel').css('color', 'red')
-  console.log('SignInError is :' + error)
 }
 
 const signOutSuccess = function (response) {
@@ -49,16 +53,20 @@ const signOutSuccess = function (response) {
   $('#changePasswordModalLabel').html('Change Password')
   $('#changePasswordModalLabel').css('color', 'black')
   $('#usernameHistory').html('Username: ')
+  $('#xTotalWins').html('Total X Wins: ')
+  $('#oTotalWins').html('Total O Wins: ')
+  $('#totalGames').html('Total Games Played: ')
+  $('#tieGames').html('Total Games Tied: ')
+  $('#onGoingGames').html('Total Unfinished Games: ')
   $('.view1').css('display', 'block')
   $('.view2').css('display', 'none')
   $('.view3').css('display', 'none')
   delete store.user
 }
 
-const signOutFailure = function (error) {
+const signOutFailure = function () {
   $('#sign-out-text').html('Error. Trouble Signing Out')
   $('#sign-out-text').css('color', 'red')
-  console.log('something went wrong: ', error)
 }
 
 module.exports = {

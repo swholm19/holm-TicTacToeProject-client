@@ -2,6 +2,9 @@
 const config = require('../config')
 const store = require('../store')
 
+// Never Use this API in the game even though it is funcitonal. When is a
+// user ever going to know the id of the game they are playing to be able to
+// call an use this function.
 const findGame = function (id) {
   return $.ajax({
     method: 'GET',

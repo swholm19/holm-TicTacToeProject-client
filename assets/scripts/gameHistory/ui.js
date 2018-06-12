@@ -1,8 +1,8 @@
 'use strict'
-const store = require('../store')
 
 const updateUserName = function (email) {
   $('#usernameHistory').html('Username: ' + email)
+  $('#playerHistory').css('border', '1px solid white')
 }
 
 const totalGames = function (numAllGames) {
@@ -22,10 +22,15 @@ const showXandOWinners = function (xWins, oWins) {
   $('#oTotalWins').html('Total O Wins: ' + oWins)
 }
 
+const findGamesFail = function () {
+  $('#playerHistory').css('border', '1px solid red')
+}
+
 module.exports = {
   updateUserName,
   totalGames,
   showTieGames,
   showOnGoingGames,
-  showXandOWinners
+  showXandOWinners,
+  findGamesFail
 }
