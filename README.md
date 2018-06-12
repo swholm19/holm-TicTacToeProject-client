@@ -48,6 +48,8 @@ give the user the best gaming experience possible.
 
 
 Odd Behavior/ Future Work:
+-Browser Sizing, if the screen size gets to small the rendering gets all wonky
+and boxs start to overlap and shift weirdly.
 -If user has hundreds of game in the database it take a couple seconds for
 the players statistics to load.
 -In future iterations would like to make seeing the player statistics
