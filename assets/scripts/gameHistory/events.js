@@ -21,29 +21,27 @@ const historyCalculations = function (data) {
 }
 
 const numGamesWon = function (games) {
-  if (games.length > 1) {
-    let numXwon = 0
-    let numOwon = 0
-    for (let i = 0; i < games.length; i++) {
-      let indGameX = 0
-      let indGameO = 0
-      if (games[i].over === true) {
-        for (let n = 0; n < games[i].cells.length; n++) {
-          if (games[i].cells[n] === 'x') {
-            indGameX += 1
-          } else if (games[i].cells[n] === 'o') {
-            indGameO += 1
-          }
+  let numXwon = 0
+  let numOwon = 0
+  for (let i = 0; i < games.length; i++) {
+    let indGameX = 0
+    let indGameO = 0
+    if (games[i].over === true) {
+      for (let n = 0; n < games[i].cells.length; n++) {
+        if (games[i].cells[n] === 'x') {
+          indGameX += 1
+        } else if (games[i].cells[n] === 'o') {
+          indGameO += 1
         }
       }
-      if (indGameX > indGameO & indGameX !== 0) {
-        numXwon += 1
-      } else if (indGameO === indGameX && indGameX !== 0) {
-        numOwon += 1
-      }
     }
-    historyUi.showXandOWinners(numXwon, numOwon)
+    if (indGameX > indGameO & indGameX !== 0) {
+      numXwon += 1
+    } else if (indGameO === indGameX && indGameX !== 0) {
+      numOwon += 1
+    }
   }
+  historyUi.showXandOWinners(numXwon, numOwon)
 }
 
 const numGamesNotFinished = function (games) {
