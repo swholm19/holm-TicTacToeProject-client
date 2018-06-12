@@ -46,6 +46,7 @@ The last thing i did was play with the game and fix any bugs or change any odd
 behavior that i saw to make sure the game was as intuitive as possible and
 give the user the best gaming experience possible.
 
+When i was developing the code i separated out the functionality and different interaction as much as possible to try and support micro-services, so that any refactors or changes can be easily done with affecting minimal parts of the code base and to help people easily find which peice of functionality they want to change.
 
 Odd Behavior/ Future Work:
 -Browser Sizing, if the screen size gets to small the rendering gets all wonky
