@@ -67,4 +67,4 @@ account.
 6) As a user, i want the game to automatically switch between the users when
 playing so that we dont accidentially play for each other.
 
-Intial Paper WireFrame: https://imgur.com/a/dfYG4wn
+Initial Paper WireFrame: https://imgur.com/a/dfYG4wn
