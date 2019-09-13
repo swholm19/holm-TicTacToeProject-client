@@ -71,3 +71,7 @@ account.
 playing so that we dont accidentially play for each other.
 
 Initial Paper WireFrame: https://imgur.com/a/dfYG4wn
+
+Run Locally:
+-npm install
+-grunt serve
